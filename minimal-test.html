@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Test</title>
+</head>
+<body>
+    <h1>Minimal Test</h1>
+    <button id="btn">Click Me</button>
+    <div id="output"></div>
+
+    <script>
+        console.log('Script loaded');
+        const btn = document.getElementById('btn');
+        console.log('Button element:', btn);
+        btn.addEventListener('click', function() {
+            console.log('Button clicked');
+            document.getElementById('output').textContent = 'Button clicked at ' + new Date();
+        });
+    </script>
+</body>
+</html>

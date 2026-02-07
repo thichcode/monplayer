@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test CORS</title>
+</head>
+<body>
+    <h1>Test Fetch URL</h1>
+    <button onclick="testFetch()">Test Fetch</button>
+    <div id="result"></div>
+
+    <script>
+        async function testFetch() {
+            const url = 'https://tt.8share.pro/socolive';
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                resultDiv.textContent = 'Đang tải...';
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                console.log('Data:', data);
+            } catch (error) {
+                resultDiv.textContent = `Lỗi: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

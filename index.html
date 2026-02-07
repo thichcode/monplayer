@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MON Player - IPTV Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">MON Player</h1>
+            <p class="subtitle">Trình phát IPTV hiện đại</p>
+        </header>
+
+        <main class="main-content">
+            <section class="url-input-section">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="iptvUrl" 
+                        class="url-input" 
+                        placeholder="Nhập URL của playlist IPTV JSON..."
+                        value="https://tt.8share.pro/socolive"
+                    >
+                    <button id="loadBtn" class="btn btn-primary">Tải Playlist</button>
+                </div>
+            </section>
+
+            <section class="channels-section" id="channelsSection" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">Kênh Truyền Hình</h2>
+                    <div class="channel-count" id="channelCount">0 kênh</div>
+                </div>
+                <div class="channels-grid" id="channelsGrid"></div>
+            </section>
+
+            <section class="player-section" id="playerSection" style="display: none;">
+                <div class="player-container">
+                    <div class="player-header">
+                        <h2 class="player-title" id="playerTitle">Chưa chọn kênh</h2>
+                        <button id="backBtn" class="btn btn-secondary">← Quay lại</button>
+                    </div>
+                    <div class="video-wrapper">
+                        <video 
+                            id="videoPlayer" 
+                            class="video-player" 
+                            controls 
+                            autoplay
+                        ></video>
+                    </div>
+                    <div class="player-info">
+                        <div class="channel-info" id="channelInfo"></div>
+                        <div class="stream-url" id="streamUrl"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">Hỗ trợ định dạng IPTV JSON Schema</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

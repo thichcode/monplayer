@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug</title>
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <button onclick="testDirectFetch()">Test Direct Fetch</button>
+    <button onclick="testProxyFetch()">Test Proxy Fetch</button>
+    <div id="result"></div>
+
+    <script>
+        async function testDirectFetch() {
+            const url = 'https://tt.8share.pro/socolive';
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                resultDiv.textContent = 'Đang tải...';
+                
+                const response = await fetch(url);
+                console.log('Direct response:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                console.log('Data:', data);
+            } catch (error) {
+                resultDiv.textContent = `Lỗi: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+
+        async function testProxyFetch() {
+            const url = 'https://tt.8share.pro/socolive';
+            const proxyUrl = `/api/iptv?url=${encodeURIComponent(url)}`;
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                resultDiv.textContent = 'Đang tải...';
+                
+                const response = await fetch(proxyUrl);
+                console.log('Proxy response:', response);
+                
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                console.log('Data:', data);
+            } catch (error) {
+                resultDiv.textContent = `Lỗi: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
